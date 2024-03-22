@@ -37,6 +37,7 @@ diff '--color=auto' -ru -x Cargo.lock workdir-1/deno-1.36.2/Cargo.toml workdir/d
 +deno_fs = { path = "../deno_fs-0.26.0" }
 +deno_node = { path = "../deno_node-0.53.0" }
 +libsqlite3-sys = { path= "../libsqlite3-sys-0.26.0" }
++libz-ng-sys = { path= "../libz-ng-sys-1.1.15" }
 diff '--color=auto' -ru -x Cargo.lock workdir-1/deno_fs-0.26.0/std_fs.rs workdir/deno_fs-0.26.0/std_fs.rs
 --- workdir-1/deno_fs-0.26.0/std_fs.rs	2023-08-24 14:24:19.582529588 +0800
 +++ workdir/deno_fs-0.26.0/std_fs.rs	2023-08-24 14:31:30.513030457 +0800
