@@ -37,7 +37,6 @@ diff '--color=auto' -ru -x Cargo.lock workdir-1/deno-1.36.2/Cargo.toml workdir/d
 +deno_fs = { path = "../deno_fs-0.26.0" }
 +deno_node = { path = "../deno_node-0.53.0" }
 +libsqlite3-sys = { path= "../libsqlite3-sys-0.26.0" }
-+libz-ng-sys = { path= "../libz-ng-sys-1.1.15" }
 diff '--color=auto' -ru -x Cargo.lock workdir-1/deno_fs-0.26.0/std_fs.rs workdir/deno_fs-0.26.0/std_fs.rs
 --- workdir-1/deno_fs-0.26.0/std_fs.rs	2023-08-24 14:24:19.582529588 +0800
 +++ workdir/deno_fs-0.26.0/std_fs.rs	2023-08-24 14:31:30.513030457 +0800
@@ -389,3 +388,15 @@ diff '--color=auto' -ru -x Cargo.lock workdir-1/deno-1.36.2/napi/util.rs workdir
 +  // to have the same size and alignment.
 +  unsafe { std::mem::transmute(ab.data()) }
 +}
+diff '--color=auto' -ru -x Cargo.lock workdir-1/libz-ng-sys-1.1.15/build_zng.rs workdir-1/libz-ng-sys-1.1.15/build_zng.rs
+--- workdir-1/libz-ng-sys-1.1.15/build_zng.rs	2024-03-22 21:56:29.031600211 +0100
++++ workdir-1/libz-ng-sys-1.1.15/build_zng.rs	2024-03-22 21:58:02.434367040 +0100
+@@ -18,6 +18,8 @@
+         cmake.define("CMAKE_GENERATOR_PLATFORM", "Win32");
+     }
+ 
++    cmake.cflag("-DWITH_ARMV6=OFF");
++
+     let install_dir = cmake.build();
+ 
+     let includedir = install_dir.join("include");
