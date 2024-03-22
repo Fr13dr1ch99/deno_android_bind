@@ -14,7 +14,7 @@ jni = "0.21.1"
 futures = "0.3"
 url = { version = "2.3.1", features = ["serde", "expose_internals"] }
 # fix for cargo metadata
-v8 = "0.75.0"
+v8 = "0.75.1"
 
 [lib]
 path = "src/main.rs"
