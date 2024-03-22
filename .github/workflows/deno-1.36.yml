@@ -10,16 +10,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v3
     - uses: denoland/setup-deno@v1
       with:
         deno-version: v1.x
 
     - run: git submodule update --init --recursive
-    - run: ls -ltr
     - run: cargo fetch
     # symlink `cargo_src` -> ~/.cargo/registry/src/XXX/
     - run: cargo metadata | deno run -A get_cargo_src.js
+    # copy source code
+    - run: make fetch_code
+    # apply patch
+    - run: cd workdir && patch -p1 < ../patch_set/p2.patch
+    - run: rm workdir/v8-0.75.0/rust-toolchain.toml
 
     - uses: docker/setup-qemu-action@v2
       with:
