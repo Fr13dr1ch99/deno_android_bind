@@ -18,7 +18,6 @@ deno:
 	export CARGO_CROSS_BUILD_CRATES=deno_runtime:deno && \
 	export CARGO_CROSS_BUILD_RS=deno_runtime-0.124.0/build.rs:deno-1.36.2/build.rs && \
 	export CARGO_CROSS_BUILD_RUN=$$(pwd)/run_build.js && \
-	cd workdir/deno-1.36.2 && \
 	cargo +cross-build build -vv --release --target aarch64-linux-android
 
 # build deno for `x86_64-linux-android`
