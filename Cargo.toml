@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+deno = { version = "1.36.2" }
 deno_runtime = { version = "0.124.0" }
 tokio = { version = "1.26.0", features = ["full"] }
 log = "0.4"
