@@ -61,7 +61,7 @@ jobs:
     # show build env
     - run: env
     # build `deno`
-    - run: WORKDIR=$(pwd)/ CARGO_DIR=~./cargo build --release --target aarch64-linux-android
+    - run: WORKDIR=$(pwd)/ CARGO_DIR=~./cargo make deno
 
     # upload deno.gitmodules
     - run: ls -ltr target/aarch64-linux-android/release
