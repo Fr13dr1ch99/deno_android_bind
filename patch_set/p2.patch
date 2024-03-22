@@ -437,9 +437,9 @@ diff '--color=auto' -ru -x Cargo.lock workdir-1/libz-ng-sys-1.1.15/src/zlib-ng/a
 -    slide_hash_chain(s->prev, wsize, wsize);
 -}
  #endif
-diff '--color=auto' -ru -x Cargo.lock Cargo.toml Cargo.toml
---- Cargo.toml	2023-08-24 14:19:31.507574549 +0800
-+++ Cargo.toml	2023-08-24 14:31:30.513030457 +0800
+diff '--color=auto' -ru -x ../Cargo.lock ../Cargo.toml ../Cargo.toml
+--- ../Cargo.toml	2023-08-24 14:19:31.507574549 +0800
++++ ../Cargo.toml	2023-08-24 14:31:30.513030457 +0800
 @@ -385,3 +385,10 @@
  
  [target."cfg(windows)".build-dependencies.winres]
