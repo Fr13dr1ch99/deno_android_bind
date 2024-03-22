@@ -356,3 +356,35 @@ diff '--color=auto' -ru -x Cargo.lock workdir-1/v8-0.75.1/build.rs workdir/v8-0.
        gn_args.push(r#"target_os="android""#.to_string());
  
        gn_args.push("treat_warnings_as_errors=false".to_string());
+diff '--color=auto' -ru -x Cargo.lock workdir-1/deno-1.36.2/napi/util.rs workdir-1/deno-1.36.2/napi/util.rs
+--- workdir-1/deno-1.36.2/napi/util.rs	2024-03-22 16:22:12.794349893 +0100
++++ workdir-1/deno-1.36.2/napi/util.rs	2024-03-22 16:22:50.624544062 +0100
+@@ -1,23 +1,8 @@
+-// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+-
++// Copyright 2018-2024 the Deno authors. All rights reserved. MIT license.
+ use deno_runtime::deno_napi::*;
+-use std::cell::Cell;
+-
+-unsafe fn get_backing_store_slice(
+-  backing_store: &mut v8::SharedRef<v8::BackingStore>,
+-  byte_offset: usize,
+-  byte_length: usize,
+-) -> &mut [u8] {
+-  let cells: *const [Cell<u8>] =
+-    &backing_store[byte_offset..byte_offset + byte_length];
+-  let mut bytes = cells as *mut [u8];
+-  &mut *bytes
+-}
+ 
+ pub fn get_array_buffer_ptr(ab: v8::Local<v8::ArrayBuffer>) -> *mut u8 {
+-  let mut backing_store = ab.get_backing_store();
+-  let byte_length = ab.byte_length();
+-  let mut slice =
+-    unsafe { get_backing_store_slice(&mut backing_store, 0, byte_length) };
+-  slice.as_mut_ptr()
+-}
++  // SAFETY: Thanks to the null pointer optimization, NonNull<T> and Option<NonNull<T>> are guaranteed
++  // to have the same size and alignment.
++  unsafe { std::mem::transmute(ab.data()) }
++}
