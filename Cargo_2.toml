@@ -26,4 +26,3 @@ deno_runtime = { path = "./workdir/deno_runtime-0.124.0" }
 deno_fs = { path = "./workdir/deno_fs-0.26.0" }
 deno_node = { path = "./workdir/deno_node-0.53.0" }
 libsqlite3-sys = { path= "./workdir/libsqlite3-sys-0.26.0" }
-libz-ng-sys = { path= "./workdir/libz-ng-sys-1.1.15" }
