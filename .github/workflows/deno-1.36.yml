@@ -67,9 +67,8 @@ jobs:
 
     # upload deno.gitmodules
     - run: ls -ltr target/aarch64-linux-android/release
-    - run: cd target/aarch64-linux-android/release && zstd -19 deno
 
     - uses: actions/upload-artifact@v3
       with:
         name: deno-1.36.2_aarch64-linux-android
-        path: workdir/deno-1.36.2/target/aarch64-linux-android/release/deno.zst
+        path: target/aarch64-linux-android/release/libbuild_deno.so
