@@ -166,8 +166,7 @@ version = "=0.10.0"
 version = "=0.4.4"
 
 [dependencies.flate2]
-version = "0.2.20"
-features = ["zlib-ng"]
+version = "1.0.26"
 default-features = false
 
 [dependencies.fs3]
