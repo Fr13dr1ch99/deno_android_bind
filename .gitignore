@@ -3,6 +3,7 @@ workdir/
 workdir-1/
 lib_v8/
 snapshot_bin/
+/deno
 
 /cargo_src
 Cargo.lock
