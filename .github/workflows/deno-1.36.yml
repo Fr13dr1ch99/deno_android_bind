@@ -60,6 +60,7 @@ jobs:
 
     # show build env
     - run: env
+    - run: ls -ltr  /home/runner/work/deno_android_bind/deno_android_bind/lib_v8/v0.75.1/
     # build `deno`
     - run: WORKDIR=$(pwd)/ CARGO_DIR=~./cargo make deno
 
