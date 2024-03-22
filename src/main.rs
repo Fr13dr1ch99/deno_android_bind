@@ -6,29 +6,29 @@ pub type ExternLogCallbackType = Option<extern "C" fn(u32, NativeString)>;
 use async_ffi::{FfiFuture, FutureExt};
 use futures::executor::block_on;
 
-use deno::deno_runtime::deno_core::anyhow::Context;
-use deno::deno_runtime::deno_core::error::AnyError;
-use deno::deno_runtime::deno_broadcast_channel::InMemoryBroadcastChannel;
-use deno::deno_runtime::deno_web::BlobStore;
-use deno::deno_runtime::permissions::PermissionsContainer;
+use deno_runtime::deno_core::anyhow::Context;
+use deno_runtime::deno_core::error::AnyError;
+use deno_runtime::deno_broadcast_channel::InMemoryBroadcastChannel;
+use deno_runtime::deno_web::BlobStore;
+use deno_runtime::permissions::PermissionsContainer;
 
-use deno::deno_runtime::worker::MainWorker;
-use deno::deno_runtime::worker::WorkerOptions;
-use deno::deno_runtime::WorkerLogLevel;
-use deno::deno_runtime::deno_fs;
-use deno::deno_runtime::deno_core::JsRuntime;
-
-
-//use deno::deno_runtime::deno_core::*;
+use deno_runtime::worker::MainWorker;
+use deno_runtime::worker::WorkerOptions;
+use deno_runtime::WorkerLogLevel;
+use deno_runtime::deno_fs;
+use deno_runtime::deno_core::JsRuntime;
 
 
-use deno::deno_runtime::BootstrapOptions;
+//use deno_runtime::deno_core::*;
+
+
+use deno_runtime::BootstrapOptions;
 use std::path::Path;
 use std::rc::Rc;
 use std::sync::Arc;
 
-use deno::deno_runtime::web_worker::SendableWebWorkerHandle;
-use deno::deno_runtime::web_worker::WebWorker;
+use deno_runtime::web_worker::SendableWebWorkerHandle;
+use deno_runtime::web_worker::WebWorker;
 
 /* JAVA */
 use jni::JNIEnv;
@@ -63,7 +63,7 @@ fn main() {
 }
 
 fn get_error_class_name(e: &AnyError) -> &'static str {
-	deno::deno_runtime::errors::get_error_class_name(e).unwrap_or("Error")
+	deno_runtime::errors::get_error_class_name(e).unwrap_or("Error")
 }
 
 
@@ -74,7 +74,7 @@ fn initWorker(filepath: &str) -> JsRuntime {
 	}));
 
 	let current_dir = std::env::current_dir().unwrap();
-	let main_module = deno::deno_runtime::deno_core::resolve_path(&filepath, &current_dir);
+	let main_module = deno_runtime::deno_core::resolve_path(&filepath, &current_dir);
 	let main_module_clone = main_module.clone();
 	if let Err(ref err) = main_module_clone {
 		log::info!("ERROR: {:?}", err);
@@ -84,7 +84,7 @@ fn initWorker(filepath: &str) -> JsRuntime {
 	log::info!("CREATE WORKER OPTIONS");
 	let options = WorkerOptions {..Default::default()};
 	log::info!("INIT NEW MAIN WORKER {}", filepath);
-	let mut js_runtime = deno::deno_runtime::deno_core::JsRuntime::new(deno::deno_runtime::deno_core::RuntimeOptions {
+	let mut js_runtime = deno_runtime::deno_core::JsRuntime::new(deno_runtime::deno_core::RuntimeOptions {
 		..Default::default()
 	});
 
@@ -110,7 +110,7 @@ async fn runjs(filepath: &str, logdir: String, mut runtime: JsRuntime) -> Result
 	log::info!("INIT RUNJS");
 	log::info!("LOAD PATH {}", filepath);
 	let current_dir = std::env::current_dir().unwrap();
-	let main_module = deno::deno_runtime::deno_core::resolve_path(&filepath, &current_dir).unwrap();
+	let main_module = deno_runtime::deno_core::resolve_path(&filepath, &current_dir).unwrap();
 	
 	let mod_id = runtime.load_main_module(&main_module, None).await?;
   let result = runtime.mod_evaluate(mod_id);
