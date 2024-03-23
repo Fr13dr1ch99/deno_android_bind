@@ -9,7 +9,7 @@ clean:
 
 # build deno for `aarch64-linux-android`
 deno:
-	export RUSTY_V8_MIRROR=$$(pwd)/lib_v8 && \
+	export RUSTY_V8_MIRROR=$$(pwd) && \
 	export PATH=$$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin:$$PATH && \
 	export CC_aarch64_linux_android=aarch64-linux-android28-clang && \
 	export CXX_aarch64_linux_android=aarch64-linux-android28-clang++ && \
