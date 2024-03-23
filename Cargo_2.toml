@@ -20,5 +20,4 @@ path = "src/main.rs"
 crate-type = ["dylib"]
 
 [patch.crates-io]
-v8 = { path = "./workdir/v8-0.75.1" }
 libz-ng-sys = { path= "./workdir/libz-ng-sys-1.1.15" }
