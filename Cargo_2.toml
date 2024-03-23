@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-deno_runtime =  { path = "./deno/runtime/" }
+deno_runtime =  { path = "./deno_code/runtime/" }
 tokio = { version = "1.26.0", features = ["full"] }
 log = "0.4"
 simple-logging = "2.0.2"
