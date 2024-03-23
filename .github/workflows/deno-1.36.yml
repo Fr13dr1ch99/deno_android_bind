@@ -47,7 +47,6 @@ jobs:
         repository: "denoland/rusty_v8"
         tag: "v0.75.0"
         fileName: "librusty_v8_release_x86_64-unknown-linux-gnu.a"
-    - run: cp librusty_v8_release_x86_64-unknown-linux-gnu.a librusty_v8_release_x86_64-unknown-linux-gnu.a
 
     # setup custom rust toolchain for cargo-cross-build
     - uses: robinraju/release-downloader@v1
